@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pay Via PayPal</title>
+    <style>
+        body {
+            background-color: #1f2430;
+            color: #fff;
+            font-family: 'Roboto', Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            background-color: #2e3440;
+            border-radius: 12px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
+            width: 400px;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .profile {
+            margin: 20px 0;
+        }
+
+        .profile-pic {
+            border-radius: 50%;
+            width: 100px;
+            height: 100px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        .qr-code {
+            margin: 20px 0;
+        }
+
+        .qr-code img {
+            width: 180px;
+            height: 180px;
+            border: 2px solid #fff;
+            border-radius: 12px;
+            cursor: pointer;
+        }
+
+        .back-btn {
+            background-color: #5760b3;
+            border: none;
+            color: #fff;
+            border-radius: 8px;
+            padding: 10px 20px;
+            cursor: pointer;
+            margin-top: 20px;
+            transition: background-color 0.3s ease;
+        }
+
+        .back-btn:hover {
+            background-color: #4851a8;
+        }
+
+        footer {
+            margin-top: 20px;
+        }
+
+        footer p {
+            font-size: 0.9em;
+        }
+
+        .url-display {
+            background-color: #4c566a;
+            padding: 10px;
+            border-radius: 8px;
+            color: #88c0d0;
+            word-break: break-all;
+            margin-top: 10px;
+        }
+        .qr-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .qr-modal img {
+            max-width: 90%;
+            max-height: 90%;
+            border-radius: 12px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6);
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background-color: #5760b3;
+            color: #fff;
+            border: none;
+            padding: 8px 12px;
+            cursor: pointer;
+            border-radius: 8px;
+            transition: background-color 0.3s ease;
+        }
+
+        .close-btn:hover {
+            background-color: #4851a8;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="profile">
+            <img src="images/logo.gif" alt="Profile" class="profile-pic">
+            <h2>Thank You for Donating with PayPal</h2>
+        </div>
+        <div class="qr-code">
+            <img src="images/paypal-qr.webp" alt="PayPal QR Code" id="qr-img" onclick="showModal('images/paypal-qr.webp')">
+            <p><b>📱 Scan or Click to Donate on PayPal 📱</b></p>
+            <div class="url-display">
+                <a href="https://www.paypal.com/paypalme/ARUSX" target="_blank" style="color: #88c0d0; text-decoration: none;">
+                    https://www.paypal.com/paypalme/ARUSX
+                </a>
+            </div>
+            
+        <button class="back-btn" onclick="window.location.href='index.html'">← Back to Payment Methods</button>
+        <footer>
+            <p>❤️ Thank You For Supporting <strong>GameDrive.Org</strong>!</p>
+        </footer>
+    </div>
+    <div class="qr-modal" id="qr-modal">
+        <img id="modal-img" src="" alt="Enlarged QR Code">
+        <button class="close-btn" onclick="closeModal()">Close</button>
+    </div>
+
+    <script>
+        function showModal(imageSrc) {
+            const modal = document.getElementById("qr-modal");
+            const modalImg = document.getElementById("modal-img");
+            modal.style.display = 'flex';
+            modalImg.src = imageSrc;
+        }
+
+        function closeModal() {
+            document.getElementById("qr-modal").style.display = 'none';
+        }
+    </script>
+</body>
+</html>

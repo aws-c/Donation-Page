@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Support GameDrive.Org and help us keep gaming alive! Donate via UPI, PayPal, Ko-fi, or cryptocurrency.">
+    <meta name="keywords" content="GameDrive, donate, support, UPI, PayPal, Ko-fi, Bitcoin, Ethereum, Dogecoin, Binance, USDT, Litecoin, Toncoin, gaming">
+    <meta name="author" content="GameDrive.Org">
+    <title>Support GameDrive.Org - Donate & Keep Gaming Alive ❤️</title>
+    <style>
+        /* General Styles */
+        :root {
+            --background-color: #1f2430;
+            --container-bg: #2e3440;
+            --button-bg: #434c5e;
+            --button-hover-bg: #4c566a;
+            --button-text-color: #fff;
+            --highlight-color: #88c0d0;
+        }
+
+        body {
+            background-color: var(--background-color);
+            color: var(--button-text-color);
+            font-family: 'Roboto', Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            background-color: var(--container-bg);
+            border-radius: 12px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
+            width: 400px;
+            padding: 30px;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 1.8em;
+            font-weight: 700;
+        }
+
+        .profile {
+            margin: 20px 0;
+        }
+
+        .profile-pic {
+            border-radius: 50%;
+            width: 100px;
+            height: 100px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        .profile h3 {
+            margin: 15px 0 0;
+            font-size: 1.4em;
+        }
+
+        .payment-options {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .option-btn {
+            background-color: var(--button-bg);
+            border: none;
+            color: var(--button-text-color);
+            padding: 15px;
+            border-radius: 8px;
+            cursor: pointer;
+            width: 140px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            transition: transform 0.3s ease, background-color 0.3s ease;
+        }
+
+        .option-btn:hover {
+            background-color: var(--button-hover-bg);
+            transform: scale(1.05);
+        }
+
+        .option-icon {
+            width: 40px;
+            margin-bottom: 10px;
+        }
+
+        footer {
+            margin-top: 20px;
+        }
+
+        footer p {
+            font-size: 0.9em;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 5px;
+        }
+
+        footer p strong {
+            color: var(--highlight-color);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>💖 Support GameDrive.Org</h1>
+        </header>
+        <section class="profile">
+            <img src="images/logo.gif" alt="GameDrive.Org Logo" class="profile-pic">
+            <h3>🌟 Keep Gaming Alive</h3>
+        </section>
+        <section class="payment-options">
+            <button class="option-btn" onclick="window.location.href='upi.html'">
+                <img src="images/upi-icon.webp" alt="UPI Payment" class="option-icon">
+                <b>UPI</b>
+            </button>
+            <button class="option-btn" onclick="window.location.href='ko-fi.html'">
+                <img src="images/kofi-icon.webp" alt="Ko-fi Payment" class="option-icon">
+                <b>Ko-fi</b>
+            </button>
+            <button class="option-btn" onclick="window.location.href='paypal.html'">
+                <img src="images/paypal-icon.webp" alt="PayPal Payment" class="option-icon">
+                <b>PayPal</b>
+            </button>
+            <button class="option-btn" onclick="window.location.href='btc.html'">
+                <img src="images/btc-icon.webp" alt="Bitcoin Payment" class="option-icon">
+                <b>BTC (Bitcoin)</b>
+            </button>
+            <button class="option-btn" onclick="window.location.href='eth.html'">
+                <img src="images/eth-icon.webp" alt="Ethereum Payment" class="option-icon">
+                <b>ETH (Ethereum)</b>
+            </button>
+            <button class="option-btn" onclick="window.location.href='dogecoin.html'">
+                <img src="images/dogecoin-icon.webp" alt="Dogecoin Payment" class="option-icon">
+                <b>Doge (Dogecoin)</b>
+            </button>
+            <button class="option-btn" onclick="window.location.href='binance.html'">
+                <img src="images/binance-icon.webp" alt="Binance Payment" class="option-icon">
+                <b>Binance Pay</b>
+            </button>
+            <button class="option-btn" onclick="window.location.href='usdt.html'">
+                <img src="images/usdt-icon.webp" alt="USDT Payment" class="option-icon">
+                <b>USDT (Tether)</b>
+            </button>
+            <button class="option-btn" onclick="window.location.href='ltc.html'">
+                <img src="images/ltc-icon.webp" alt="Litecoin Payment" class="option-icon">
+                <b>LTC (Litecoin)</b>
+            </button>
+            <button class="option-btn" onclick="window.location.href='ton.html'">
+                <img src="images/ton-icon.webp" alt="Toncoin Payment" class="option-icon">
+                <b>TON (Toncoin)</b>
+            </button>
+        </section>
+        <footer>
+            <p>❤️ Thank You For Supporting <strong>GameDrive.Org</strong>!</p>
+        </footer>
+    </div>
+</body>
+</html>

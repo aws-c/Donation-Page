@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pay Via UPI</title>
+    <style>
+        body {
+            background-color: #1f2430;
+            color: #fff;
+            font-family: 'Roboto', Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            background-color: #2e3440;
+            border-radius: 12px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
+            width: 400px;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .header {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .profile {
+            margin: 20px 0;
+        }
+
+        .profile-pic {
+            border-radius: 50%;
+            width: 100px;
+            height: 100px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        .network-options {
+            display: flex;
+            justify-content: center;
+            margin: 15px 0;
+        }
+
+        .tab {
+            background-color: #434c5e;
+            color: #fff;
+            padding: 10px 15px;
+            border-radius: 8px;
+            cursor: pointer;
+            margin: 0 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .tab.active {
+            background-color: #5760b3;
+        }
+
+        .tab:hover {
+            background-color: #4c566a;
+        }
+
+        .qr-code {
+            margin: 20px 0;
+        }
+
+        .qr-code img {
+            width: 180px;
+            height: 180px;
+            border: 2px solid #fff;
+            border-radius: 12px;
+            cursor: pointer;
+        }
+
+        .address {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            background-color: #4c566a;
+            border-radius: 8px;
+            padding: 10px;
+            margin-bottom: 20px;
+        }
+
+        .address p {
+            word-break: break-all;
+            margin: 0;
+            font-size: 14px;
+        }
+
+        .address button {
+            background-color: #5760b3;
+            border: none;
+            color: #fff;
+            border-radius: 8px;
+            padding: 8px 12px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .address button:hover {
+            background-color: #4851a8;
+        }
+
+        .back-btn {
+            background-color: #5760b3;
+            border: none;
+            color: #fff;
+            border-radius: 8px;
+            padding: 10px 20px;
+            cursor: pointer;
+            margin-top: 20px;
+            transition: background-color 0.3s ease;
+        }
+
+        .back-btn:hover {
+            background-color: #4851a8;
+        }
+
+        footer {
+            margin-top: 20px;
+        }
+
+        footer p {
+            font-size: 0.9em;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 5px;
+        }
+
+        footer p strong {
+            color: #88c0d0;
+        }
+        .qr-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.8);
+            justify-content: center;
+            align-items: center;
+        }
+
+        .qr-modal img {
+            max-width: 90%;
+            max-height: 90%;
+            border: none;
+            border-radius: 12px;
+        }
+
+        .qr-modal .close-btn {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background-color: #5760b3;
+            color: #fff;
+            border: none;
+            padding: 8px 12px;
+            cursor: pointer;
+            border-radius: 8px;
+            transition: background-color 0.3s ease;
+        }
+
+        .qr-modal .close-btn:hover {
+            background-color: #4851a8;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+        </div>
+        <div class="profile">
+            <img src="images/logo.gif" alt="Profile" class="profile-pic">
+            <h2>Thank You for Donating with UPI</h2>
+        </div>
+        <div class="network-options">
+            <div class="tab active" id="upi-1" onclick="showOption('upi-1')">ID 1</div>
+            <div class="tab" id="upi-2" onclick="showOption('upi-2')">ID 2</div>
+        </div>
+        <div class="qr-code" id="qr-code">
+            <a href="upi://pay?pa=gamedrive.org@axl">
+                <img src="images/upi-1-qr.webp" alt="UPI QR Code" id="qr-img" onclick="showModal('images/upi-1-qr.webp')">
+            </a>
+            <p><b>⚡ Click on the QR to scan and pay ⚡</b></p>
+        </div>
+        <div class="address">
+            <p id="address-text">gamedrive.org@axl</p>
+            <button onclick="copyAddress()">Copy</button>
+        </div>
+        <button class="back-btn" onclick="window.location.href='index.html'">← Back to Payment Methods</button>
+        <footer>
+            <p>❤️ Thank You For Supporting <strong>GameDrive.Org</strong>!</p>
+        </footer>
+    </div>
+    <div class="qr-modal" id="qr-modal">
+        <img id="modal-img" src="" alt="Enlarged QR Code">
+        <button class="close-btn" onclick="closeModal()">Close</button>
+    </div>
+
+    <script>
+        function showOption(optionId) {
+            const qrCode = document.getElementById('qr-code');
+            const qrImg = document.getElementById('qr-img');
+            const addressText = document.getElementById('address-text');
+
+            if (optionId === 'upi-1') {
+                qrImg.src = 'images/upi-1-qr.webp';
+                addressText.textContent = 'gamedrive.org@axl';
+            } else if (optionId === 'upi-2') {
+                qrImg.src = 'images/upi-2-qr.webp';
+                addressText.textContent = 'cybar.xyz@axl';
+            }
+
+            document.querySelectorAll('.tab').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            document.getElementById(optionId).classList.add('active');
+        }
+
+        function showModal(imageSrc) {
+            const modal = document.getElementById('qr-modal');
+            const modalImg = document.getElementById('modal-img');
+            modal.style.display = 'flex';
+            modalImg.src = imageSrc;
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('qr-modal');
+            modal.style.display = 'none';
+        }
+
+        function copyAddress() {
+            const addressText = document.getElementById('address-text').textContent;
+            navigator.clipboard.writeText(addressText).then(() => {
+                alert('Address copied to clipboard!');
+            }).catch(err => {
+                console.error('Could not copy text: ', err);
+            });
+        }
+    </script>
+</body>
+</html>
